@@ -30,7 +30,7 @@ public class Amazon {
 	}
 	
 	public ShopLinks get_shoplink(String value) {
-		return new ShopLinks(value);
+		return new ShopLinks(value, new DefaultLinks().get_amazonurl());
 	}
 
 	public Results getAmazonResults() {

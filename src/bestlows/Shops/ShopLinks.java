@@ -4,16 +4,24 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 public class ShopLinks {
-	private final String _amazonurl = "https://www.amazon.com/s/ref=nb_sb_noss_1?url=search-alias%3Daps&field-keywords={SearchString}&sort=price-asc-rank";
+	/***
+	 * Shop links
+	 * **/
 	
 	private String _searchKeyword;
+	private String _url;
 	
-	public ShopLinks(String searchKeyword) {
+	public ShopLinks(String searchKeyword, String url) {
 		_searchKeyword = searchKeyword;
+		_url = url;
 	}
 	
 	public void set_shoplink(String value) {
 		this._searchKeyword = value;
+	}
+	
+	public void set_shopurl(String value) {
+		this._url = value;
 	}
 	
 	public String get_UrlEncodeSearchString() {
@@ -25,6 +33,6 @@ public class ShopLinks {
 	}
 	
 	public String get_UrlSearchKeyword() {
-		return  _amazonurl.replace("{SearchString}", get_UrlEncodeSearchString());
+		return  _url.replace("{SearchString}", get_UrlEncodeSearchString());
 	}
 }
