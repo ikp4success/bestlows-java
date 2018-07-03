@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bestlows.Shops.Amazon;
+import bestlows.Utilities.DefaultResources;
 import bestlows.Utilities.Results;
 
 /**
@@ -16,7 +17,7 @@ import bestlows.Utilities.Results;
 @WebServlet("/SearchedResults")
 public class SearchedResults extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private String displayResults = null;
+	private String ErrorMessage;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -32,17 +33,24 @@ public class SearchedResults extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String searchParameter = request.getParameter("search");
+		String displayResults = null;
+
 		if (!searchParameter.isEmpty() && searchParameter != null) {
 			Results amazonResults = new Amazon(searchParameter).getAmazonResults();
-			displayResults = amazonResults.displayResults();
-			
-			if(displayResults !=null) {
+			if (amazonResults != null) {
+				displayResults = amazonResults.displayResults();
+			}
+			if (displayResults != null) {
 				request.setAttribute("display_results", displayResults);
 				request.getRequestDispatcher("/SearchedResultsWeb.jsp").forward(request, response);
-			}else {
-				//display error page
+			} else {
+				// display error page
+				ErrorMessage = new DefaultResources().ErrorMessage("Could not find " + searchParameter);
+				System.out.println(searchParameter);
+				request.setAttribute("error_message", ErrorMessage);
+				request.getRequestDispatcher("/SearchedResultsWeb.jsp").forward(request, response);
 			}
-			
+
 			System.out.println(displayResults);
 
 		}

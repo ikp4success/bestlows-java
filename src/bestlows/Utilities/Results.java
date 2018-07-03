@@ -95,7 +95,7 @@ public class Results {
 	}
 	
 	private boolean Valid() {
-		return IfNullEmpty(get_title())|| IfNullEmpty(get_price())|| IfNullEmpty(get_link())|| IfNullEmpty(get_description());
+		return IfNullEmpty(get_title())|| IfNullEmpty(get_price())|| IfNullEmpty(get_link());
 	}
 	
 	private boolean IfNullEmpty(String value) {

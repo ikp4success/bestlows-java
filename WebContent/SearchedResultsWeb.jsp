@@ -52,15 +52,21 @@
 		<form class="form-inline my-2 my-lg-0" action="SearchedResults"
 			Method="POST">
 			<input class="form-control mr-sm-2" type="text" name="search"
-				placeholder="e.g television" id="inputLarge" style="width: 85%;" id="inputDefault">
+				placeholder="e.g television" id="inputLarge" style="width: 85%;"
+				id="inputDefault">
 			<button class="btn btn-search" type="submit">Search</button>
 		</form>
 
 	</div>
+
+	${error_message}
+
 	<div class="container results">
 		<div class="row">${display_results}</div>
 
 	</div>
+
+
 
 	<footer class="py-5 bg-light">
 	<div class="container">
