@@ -1,6 +1,9 @@
 package bestlows;
 
+import java.awt.List;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bestlows.Shops.Amazon;
+import bestlows.Shops.BestBuy;
 import bestlows.Utilities.DefaultResources;
 import bestlows.Utilities.Results;
 
@@ -37,6 +41,9 @@ public class SearchedResults extends HttpServlet {
 
 		if (!searchParameter.isEmpty() && searchParameter != null) {
 			Results amazonResults = new Amazon(searchParameter).getAmazonResults();
+			Results bestbuyResults = new BestBuy(searchParameter).getBestBuyResults();
+			
+			ArrayList<Results> results = new ArrayList<Results>();
 			if (amazonResults != null) {
 				displayResults = amazonResults.displayResults();
 			}

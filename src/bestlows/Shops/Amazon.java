@@ -6,12 +6,13 @@ import org.jsoup.select.Elements;
 
 import bestlows.Utilities.ExtraClass;
 import bestlows.Utilities.Results;
+import bestlows.Utilities.ShopNames;
 import bestlows.Utilities.ShopConnection;
 
 public class Amazon {
 
 	private String _searchKeyword;
-	private final String _shopName = "AMAZON";
+	private final ShopNames _shopName = ShopNames.AMAZON;
 
 	public Amazon(String searchString) {
 		_searchKeyword = searchString;
@@ -27,7 +28,7 @@ public class Amazon {
 	}
 
 	public String get_ShopName() {
-		return _shopName;
+		return _shopName.toString();
 	}
 
 	public ShopLinks get_shoplink(String value) {
@@ -49,7 +50,7 @@ public class Amazon {
 			Element image = doc.selectFirst("#imgTagWrapperId img#landingImage");
 			Element price = doc.selectFirst("#priceblock_ourprice");
 
-			result.set_shopName(_shopName);
+			result.set_shopName(get_ShopName());
 			result.set_link(bestitemLink);
 			if (image != null) {
 				result.set_image(image.attr("data-old-hires").trim());
