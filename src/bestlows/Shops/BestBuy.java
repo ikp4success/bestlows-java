@@ -2,8 +2,6 @@ package bestlows.Shops;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
 import bestlows.Utilities.Results;
 import bestlows.Utilities.ShopConnection;
 import bestlows.Utilities.ShopNames;
@@ -30,7 +28,7 @@ public class BestBuy {
 	}
 
 	public ShopLinks get_shoplink(String value) {
-		return new ShopLinks(value, new DefaultLinks().get_amazonurl());
+		return new ShopLinks(value, new DefaultLinks().get_bestbuyurl());
 	}
 
 	public Results getBestBuyResults() {

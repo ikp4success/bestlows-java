@@ -33,6 +33,13 @@ public class Results {
 	public String get_price() {
 		return _price;
 	}
+	
+	public Double get_sort_price() {
+		if (_price != null){
+			return Double.parseDouble(_price.replace("$", ""));
+		}
+		return 0.0;
+	}
 
 	public void set_price(String _price) {
 		this._price = _price;

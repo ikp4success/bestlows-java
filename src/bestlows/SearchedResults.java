@@ -1,8 +1,10 @@
 package bestlows;
 
-import java.awt.List;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,13 +42,8 @@ public class SearchedResults extends HttpServlet {
 		String displayResults = null;
 
 		if (!searchParameter.isEmpty() && searchParameter != null) {
-			Results amazonResults = new Amazon(searchParameter).getAmazonResults();
-			Results bestbuyResults = new BestBuy(searchParameter).getBestBuyResults();
-			
-			ArrayList<Results> results = new ArrayList<Results>();
-			if (amazonResults != null) {
-				displayResults = amazonResults.displayResults();
-			}
+			displayResults = getDisplayResults(searchParameter);
+
 			if (displayResults != null) {
 				request.setAttribute("display_results", displayResults);
 				request.getRequestDispatcher("/SearchedResultsWeb.jsp").forward(request, response);
@@ -61,6 +58,36 @@ public class SearchedResults extends HttpServlet {
 			System.out.println(displayResults);
 
 		}
+	}
+
+	public String getDisplayResults(String searchParameter) {
+		Results amazonResults = new Amazon(searchParameter).getAmazonResults();
+		Results bestbuyResults = new BestBuy(searchParameter).getBestBuyResults();
+		String displayResults = "";
+
+		List<Results> results = removeEmptyResults(Arrays.asList(amazonResults, bestbuyResults));
+
+		if (results.size() > 1) {
+			results.sort((r1, r2) -> {
+				return r1.get_sort_price().compareTo(r2.get_sort_price());
+			}); // sort price
+		}
+
+		for (Results result : results) {
+			displayResults += result.displayResults();
+		}
+
+		return displayResults;
+	}
+	
+	public List<Results> removeEmptyResults(List<Results> results) {
+		List<Results> n_results = new ArrayList<Results>();
+		for (Results result : results) {
+			if(result != null) {
+				n_results.add(result);
+			}
+		}
+		return n_results;
 	}
 
 }
