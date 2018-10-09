@@ -75,7 +75,7 @@ public class Ebay {
 		ExtraClass extra = new ExtraClass();
 		Document doc;
 		String item_url = null;
-		doc = new ShopConnection().DynamicConnection(get_shoplink(_searchKeyword).get_UrlSearchKeyword());
+		doc = new ShopConnection().connect(get_shoplink(_searchKeyword).get_UrlSearchKeyword());
 
 		if (doc == null) {
 			return null;
