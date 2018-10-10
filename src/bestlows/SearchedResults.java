@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import bestlows.Shops.Amazon;
 import bestlows.Shops.BestBuy;
 import bestlows.Shops.Ebay;
+import bestlows.Shops.Walmart;
 import bestlows.Utilities.DefaultResources;
 import bestlows.Utilities.Results;
 
@@ -64,10 +65,11 @@ public class SearchedResults extends HttpServlet {
 	public String getDisplayResults(String searchParameter) {
 		Results amazonResults = new Amazon(searchParameter).getAmazonResults();
 		Results bestbuyResults = new BestBuy(searchParameter).getBestBuyResults();
-		Results ebayResults = new Ebay(searchParameter).getEbayResults();
+//		Results ebayResults = new Ebay(searchParameter).getEbayResults();
+		Results walmartResults = new Walmart(searchParameter).getWalmartResults();
 		String displayResults = "";
 
-		List<Results> results = removeEmptyResults(Arrays.asList(amazonResults, bestbuyResults, ebayResults));
+		List<Results> results = removeEmptyResults(Arrays.asList(amazonResults, bestbuyResults, walmartResults));
 
 		if (results.size() > 1) {
 			results.sort((r1, r2) -> {

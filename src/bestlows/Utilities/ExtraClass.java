@@ -28,7 +28,7 @@ public class ExtraClass {
 	}
 
 	public boolean iSNotNullEmpty(String value) {
-		return !value.isEmpty() || value != null;
+		return value!="" || value != null;
 	}
 
 	private Matcher get_matcher(String pattern_val, String result) {

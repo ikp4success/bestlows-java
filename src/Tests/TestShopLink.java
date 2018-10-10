@@ -29,7 +29,7 @@ class TestShopLink {
 	}
 	
 	private Document TestShopConnection(String url) {
-		return new ShopConnection().connect(url);
+		return new ShopConnection().connect_default(url);
 	}
 
 }

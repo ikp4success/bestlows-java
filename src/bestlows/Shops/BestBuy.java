@@ -9,10 +9,15 @@ import bestlows.Utilities.ShopNames;
 public class BestBuy {
 	private String _searchKeyword;
 	private final ShopNames _shopName = ShopNames.BESTBUY;
+	private final Boolean _active = true;
 
 	public BestBuy(String searchString) {
 		_searchKeyword = searchString;
 
+	}
+	
+	public Boolean get_status() {
+		return _active;
 	}
 
 	public String get_searchedString() {
@@ -38,7 +43,7 @@ public class BestBuy {
 		if (bestitemLink == null) {
 			return null;
 		}
-		doc = new ShopConnection().connect(bestitemLink);
+		doc = new ShopConnection().connect(bestitemLink, get_shoplink(_searchKeyword).get_UrlSearchKeyword());
 		if (doc != null) {
 			result = new Results();
 			Element title = doc.selectFirst("#sku-title");
@@ -72,8 +77,7 @@ public class BestBuy {
 	private String getBestItem() {
 		Document doc;
 		String item_url = null;
-		doc = new ShopConnection().connect(get_shoplink(_searchKeyword).get_UrlSearchKeyword());
-
+		doc = new ShopConnection().connect_default(get_shoplink(_searchKeyword).get_UrlSearchKeyword());
 		if (doc == null) {
 			return null;
 		}
