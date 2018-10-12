@@ -6,6 +6,7 @@ public enum ShopNames {
 	BESTBUY,
 	EBAY,
 	TARGET,
-	WALMART
+	WALMART,
+	TJMAXX
 
 }

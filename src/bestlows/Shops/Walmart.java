@@ -38,6 +38,7 @@ public class Walmart {
 	}
 
 	public Results getWalmartResults() {
+		String parent_url = get_shoplink(_searchKeyword).get_UrlSearchKeyword();
 		Results result = null;
 		Document doc;
 		String bestitemLink = getBestItem();
@@ -53,7 +54,7 @@ public class Walmart {
 			Element price = doc.selectFirst(".prod-PriceHero span");
 
 			result.set_shopName(get_ShopName());
-			result.set_link(bestitemLink);
+			result.set_link(bestitemLink, parent_url);
 			if (image != null) {
 				result.set_image(image.attr("src").trim());
 			}

@@ -72,7 +72,7 @@ public class ShopConnection {
 
 	}
 
-	private String prepend_domain(String url, String domain) throws URISyntaxException {
+	String prepend_domain(String url, String domain) throws URISyntaxException {
 		domain = get_domain_name(domain);
 		if (domain != null) {
 			if (!url.startsWith("http")) {

@@ -40,6 +40,7 @@ public class Ebay {
 	}
 
 	public Results getEbayResults() {
+		String parent_url = get_shoplink(_searchKeyword).get_UrlSearchKeyword();
 		Results result = null;
 		Document doc;
 		String bestitemLink = getBestItem();
@@ -55,7 +56,7 @@ public class Ebay {
 			Element price = doc.selectFirst("#prcIsum");
 
 			result.set_shopName(get_ShopName());
-			result.set_link(bestitemLink);
+			result.set_link(bestitemLink, parent_url);
 			if (image != null) {
 				result.set_image(image.attr("src").trim());
 			}

@@ -1,5 +1,6 @@
 package bestlows.Utilities;
 
+import java.net.URISyntaxException;
 
 public class Results {
 	private String _title;
@@ -65,8 +66,12 @@ public class Results {
 		return _link;
 	}
 
-	public void set_link(String _link) {
-		this._link = _link;
+	public void set_link(String _link, String domain) {
+		try {
+			this._link = new ShopConnection().prepend_domain(_link, domain);
+		}catch(Exception ex) {
+			this._link = null;
+		}
 	}
 	
 	public void set_shopName(String shop) {

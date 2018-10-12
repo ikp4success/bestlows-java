@@ -37,13 +37,14 @@ public class BestBuy {
 	}
 
 	public Results getBestBuyResults() {
+		String parent_url = get_shoplink(_searchKeyword).get_UrlSearchKeyword();
 		Results result = null;
 		Document doc;
 		String bestitemLink = getBestItem();
 		if (bestitemLink == null) {
 			return null;
 		}
-		doc = new ShopConnection().connect(bestitemLink, get_shoplink(_searchKeyword).get_UrlSearchKeyword());
+		doc = new ShopConnection().connect(bestitemLink, parent_url);
 		if (doc != null) {
 			result = new Results();
 			Element title = doc.selectFirst("#sku-title");
@@ -52,7 +53,7 @@ public class BestBuy {
 			Element price = doc.selectFirst(".priceView-hero-price");
 
 			result.set_shopName(get_ShopName());
-			result.set_link(bestitemLink);
+			result.set_link(bestitemLink, parent_url);
 			if (image != null) {
 				result.set_image(image.attr("src").trim());
 			}
