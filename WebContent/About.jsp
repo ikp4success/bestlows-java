@@ -36,6 +36,7 @@
         </div>
       </div>
     </div>
+    <div class="About"><p>BestLow provide's the lowest prize for any product searched on this platform</p></div>
 <footer class="py-5 bg-light">
       <div class="container">
         <p class="m-0 text-center text-dark">Copyright &copy; BestLows 2018</p>

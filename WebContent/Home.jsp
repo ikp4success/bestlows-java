@@ -60,7 +60,7 @@
 	<footer class="py-5 bg-light">
 	<div class="container">
 		<p class="m-0 text-center text-dark">Copyright &copy; BestLows
-			2018</p>
+			2018 Alpha Release</p>
 	</div>
 	</footer>
 </body>
