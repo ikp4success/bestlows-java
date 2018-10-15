@@ -7,6 +7,8 @@ public enum ShopNames {
 	EBAY,
 	TARGET,
 	WALMART,
-	TJMAXX
+	TJMAXX,
+	GOOGLE,
+	NEWEGG
 
 }

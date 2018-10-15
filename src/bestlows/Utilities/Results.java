@@ -58,8 +58,12 @@ public class Results {
 		return _image;
 	}
 
-	public void set_image(String _image) {
-		this._image = _image;
+	public void set_image(String _image, String domain) {
+		try {
+			this._image = new ShopConnection().prepend_domain(_image, domain);
+		}catch(Exception ex) {
+			this._image = null;
+		}
 	}
 
 	public String get_link() {

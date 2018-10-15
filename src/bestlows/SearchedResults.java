@@ -15,9 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 import bestlows.Shops.Amazon;
 import bestlows.Shops.BestBuy;
 import bestlows.Shops.Ebay;
+import bestlows.Shops.Google;
 import bestlows.Shops.TjMaxx;
 import bestlows.Shops.Walmart;
 import bestlows.Utilities.DefaultResources;
+import bestlows.Utilities.DisplayResults;
 import bestlows.Utilities.Results;
 
 /**
@@ -63,37 +65,9 @@ public class SearchedResults extends HttpServlet {
 		}
 	}
 
-	public String getDisplayResults(String searchParameter) {
-		Results amazonResults = new Amazon(searchParameter).getAmazonResults();
-		Results bestbuyResults = new BestBuy(searchParameter).getBestBuyResults();
-//		Results ebayResults = new Ebay(searchParameter).getEbayResults();
-		Results walmartResults = new Walmart(searchParameter).getWalmartResults();
-		Results tjmaxxResults = new TjMaxx(searchParameter).getTjMaxxResults();
-		String displayResults = "";
-
-		List<Results> results = removeEmptyResults(Arrays.asList(amazonResults, bestbuyResults, walmartResults, tjmaxxResults));
-
-		if (results.size() > 1) {
-			results.sort((r1, r2) -> {
-				return r1.get_sort_price().compareTo(r2.get_sort_price());
-			}); // sort price
-		}
-
-		for (Results result : results) {
-			displayResults += result.displayResults();
-		}
-
-		return displayResults;
-	}
-	
-	public List<Results> removeEmptyResults(List<Results> results) {
-		List<Results> n_results = new ArrayList<Results>();
-		for (Results result : results) {
-			if(result != null) {
-				n_results.add(result);
-			}
-		}
-		return n_results;
+	private String getDisplayResults(String searchParameter) {
+		DisplayResults dr = new DisplayResults(searchParameter);
+		return dr.getDisplayResults();
 	}
 
 }

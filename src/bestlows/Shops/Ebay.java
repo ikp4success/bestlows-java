@@ -58,7 +58,7 @@ public class Ebay {
 			result.set_shopName(get_ShopName());
 			result.set_link(bestitemLink, parent_url);
 			if (image != null) {
-				result.set_image(image.attr("src").trim());
+				result.set_image(image.attr("src").trim(), parent_url);
 			}
 			if (title != null) {
 				result.set_title(title.text().trim());
@@ -81,7 +81,7 @@ public class Ebay {
 		ExtraClass extra = new ExtraClass();
 		Document doc;
 		String item_url = null;
-		doc = new ShopConnection().native_curl(get_shoplink(_searchKeyword).get_UrlSearchKeyword(), get_shoplink(_searchKeyword).get_UrlSearchKeyword());
+		doc = new ShopConnection().connect_default(get_shoplink(_searchKeyword).get_UrlSearchKeyword());
 
 		if (doc == null) {
 			return null;

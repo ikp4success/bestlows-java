@@ -58,7 +58,7 @@ public class Amazon {
 			result.set_shopName(get_ShopName());
 			result.set_link(bestitemLink, parent_url);
 			if (image != null) {
-				result.set_image(image.attr("data-old-hires").trim());
+				result.set_image(image.attr("data-old-hires").trim(), parent_url);
 			}
 			if (title != null) {
 				result.set_title(title.text().trim());

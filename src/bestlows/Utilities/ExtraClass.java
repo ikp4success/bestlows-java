@@ -3,11 +3,25 @@ package bestlows.Utilities;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.util.Base64;
+
 public class ExtraClass {
 
 	public ExtraClass() {
 
 	}
+
+//	public decode_base64(String image) {
+//		if(image.contains("data:")) {
+//			byte[] decoded = Base64.getDecoder().decodeToString(image);
+//			
+//		}
+//		return image
+//		
+//	}
 
 	public Integer isInteger(String text) {
 		if (text.isEmpty() || text == null) {
@@ -28,7 +42,7 @@ public class ExtraClass {
 	}
 
 	public boolean iSNotNullEmpty(String value) {
-		return value!="" || value != null;
+		return value != "" || value != null;
 	}
 
 	private Matcher get_matcher(String pattern_val, String result) {
@@ -53,24 +67,33 @@ public class ExtraClass {
 
 	public String str_get_match(String pattern_val, String result, int group_index) {
 		Matcher matcher = get_matcher(pattern_val, result);
-		if(group_index  < 0) {
+		if (group_index < 0) {
 			return result;
 		}
-		
+
 		if (matcher == null) {
 			return result;
 		}
-		
+
 		if (group_index >= matcher.group().length()) {
 			return result;
 		}
-		
+
 		try {
-		   return matcher.group(group_index);
-		}catch(Exception ex){
+			return matcher.group(group_index);
+		} catch (Exception ex) {
 			return null;
 		}
-		
+
+	}
+
+	public String getall(Elements elements) {
+		String content = "";
+		for (Element element : elements) {
+			content += element.text();
+		}
+
+		return content;
 	}
 
 }

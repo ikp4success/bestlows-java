@@ -58,7 +58,7 @@ public class TjMaxx {
 			result.set_shopName(get_ShopName());
 			result.set_link(bestitemLink, parent_url);
 			if (image != null) {
-				result.set_image("https:" + image.attr("src").trim());
+				result.set_image("https:" + image.attr("src").trim(), parent_url);
 			}
 			if (title != null) {
 				if(brand != null) {

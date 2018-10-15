@@ -9,8 +9,6 @@ import java.net.URL;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class ShopConnection {
 
@@ -20,13 +18,13 @@ public class ShopConnection {
 	public ShopConnection() {
 
 	}
-	
+
 	public Document connect_default(String url) {
 		try {
 			return Jsoup.connect(url).timeout(_timeout).userAgent(_userAgent).referrer(url).followRedirects(true).get();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
@@ -42,16 +40,6 @@ public class ShopConnection {
 		}
 
 		return null;
-	}
-
-	public Document dynamic_connect(final String url) {
-		// TODO still need some fixing
-		System.setProperty("webdriver.gecko.driver", "ExternalResources/geckodriver.exe");
-		WebDriver driver = new FirefoxDriver();
-		driver.get(url);
-		// Document doc = connect(driver.getPageSource());
-		Document doc = Jsoup.parse(driver.getPageSource());
-		return doc;
 	}
 
 	public Document native_curl(String url, String parent_url) {
@@ -75,19 +63,26 @@ public class ShopConnection {
 	String prepend_domain(String url, String domain) throws URISyntaxException {
 		domain = get_domain_name(domain);
 		if (domain != null) {
-			if (!url.startsWith("http")) {
-				return domain + url;
+			String valid_scheme = new URI(url).getScheme();
+			String valid_host = new URI(url).getHost();
+			if (valid_scheme == null && valid_host != null) {
+				return "https:" + url;
+			} else {
+				if (!url.startsWith("http")) {
+					return domain + url;
+				}
+				if (!url.startsWith("http") && !url.startsWith("/")) {
+					return domain + "/" + url;
+				}
 			}
-			if (!url.startsWith("http") && !url.startsWith("/")) {
-				return domain + "/" + url;
-			}
+
 		}
 		return url;
 	}
 
 	private String get_domain_name(String url) throws URISyntaxException {
 		URI uri = new URI(url);
-		String domain = uri.getScheme() +"://" +uri.getHost();
+		String domain = uri.getScheme() + "://" + uri.getHost();
 		return domain;
 	}
 
