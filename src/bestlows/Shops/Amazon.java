@@ -47,7 +47,7 @@ public class Amazon {
 		if (bestitemLink == null) {
 			return null;
 		}
-		doc = new ShopConnection().connect(bestitemLink, get_shoplink(_searchKeyword).get_UrlSearchKeyword());
+		doc = new ShopConnection().connect_okhttpclient(bestitemLink, get_shoplink(_searchKeyword).get_UrlSearchKeyword());
 		if (doc != null) {
 			result = new Results();
 			Element title = doc.selectFirst("#titleSection #productTitle");
@@ -78,7 +78,7 @@ public class Amazon {
 	private String getBestItem() {
 		Document doc;
 		String bestItemUrl = null;
-		doc = new ShopConnection().connect_default(get_shoplink(_searchKeyword).get_UrlSearchKeyword());
+		doc = new ShopConnection().connect_okhttpclient_default(get_shoplink(_searchKeyword).get_UrlSearchKeyword());
 		//System.out.println(doc);
 
 		if (doc == null) {

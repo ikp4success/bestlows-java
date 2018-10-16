@@ -15,7 +15,7 @@ public class DebugSearchedResults {
 
 	public static void main(String[] args) {
 //		Results amazonResults = new Amazon("television").getAmazonResults();
-//		Results bestbuyResults = new BestBuy("printer").getBestBuyResults();
+		Results bestbuyResults = new BestBuy("printer").getBestBuyResults();
 //		Results ebayResults = new Ebay("cats").getEbayResults();
 //		Results walmartResults = new Walmart("television").getWalmartResults();
 //		String item = "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
@@ -24,9 +24,9 @@ public class DebugSearchedResults {
 //		Results tjmaxtResults = new TjMaxx("wallet").getTjMaxxResults();
 //		System.out.println(tjmaxtResults.displayResults());
 //		Results googleResults = new Google("wallet").getGoogleResults();
-		Results targetResults = new Target("wallet").getTargetResults();
+	//	Results targetResults = new Target("wallet").getTargetResults();
 //		Results neweggResults = new Newegg("wallet").getNeweggResults();
-		System.out.println(targetResults.displayResults());
+		System.out.println(bestbuyResults.displayResults());
 	}
 
 }

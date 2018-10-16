@@ -44,7 +44,7 @@ public class Google {
 		Document doc;
 		String item_url = null;
 		Results result = null;
-		doc = new ShopConnection().connect_default(parent_url);
+		doc = new ShopConnection().connect_okhttpclient_default(parent_url);
 
 		if (doc == null) {
 			return result;

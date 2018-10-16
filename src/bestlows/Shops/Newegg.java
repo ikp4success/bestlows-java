@@ -48,7 +48,7 @@ public class Newegg {
 		if (bestitemLink == null) {
 			return null;
 		}
-		doc = new ShopConnection().connect(bestitemLink, parent_url);
+		doc = new ShopConnection().connect_okhttpclient(bestitemLink, parent_url);
 		if (doc != null) {
 			result = new Results();
 			Element title = doc.selectFirst("#grpDescrip_h");
@@ -81,7 +81,7 @@ public class Newegg {
 	private String getBestItem() {
 		Document doc;
 		String item_url = null;
-		doc = new ShopConnection().connect_default(get_shoplink(_searchKeyword).get_UrlSearchKeyword());
+		doc = new ShopConnection().connect_okhttpclient_default(get_shoplink(_searchKeyword).get_UrlSearchKeyword());
 		if (doc == null) {
 			return null;
 		}

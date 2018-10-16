@@ -47,7 +47,7 @@ public class Ebay {
 		if (bestitemLink == null) {
 			return null;
 		}
-		doc = new ShopConnection().connect(bestitemLink, get_shoplink(_searchKeyword).get_UrlSearchKeyword());
+		doc = new ShopConnection().connect_okhttpclient(bestitemLink, get_shoplink(_searchKeyword).get_UrlSearchKeyword());
 		if (doc != null) {
 			result = new Results();
 			Element title = doc.selectFirst("#itemTitle");
@@ -81,7 +81,7 @@ public class Ebay {
 		ExtraClass extra = new ExtraClass();
 		Document doc;
 		String item_url = null;
-		doc = new ShopConnection().connect_default(get_shoplink(_searchKeyword).get_UrlSearchKeyword());
+		doc = new ShopConnection().connect_okhttpclient_default(get_shoplink(_searchKeyword).get_UrlSearchKeyword());
 
 		if (doc == null) {
 			return null;

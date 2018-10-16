@@ -6,6 +6,7 @@ import java.util.List;
 
 import bestlows.Shops.Amazon;
 import bestlows.Shops.BestBuy;
+import bestlows.Shops.Ebay;
 import bestlows.Shops.Google;
 import bestlows.Shops.Newegg;
 import bestlows.Shops.Target;
@@ -22,15 +23,15 @@ public class DisplayResults {
 	public String getDisplayResults() {
 		Results amazonResults = new Amazon(_searchParameter).getAmazonResults();
 		Results bestbuyResults = new BestBuy(_searchParameter).getBestBuyResults();
-//		Results ebayResults = new Ebay(searchParameter).getEbayResults();
+		Results ebayResults = new Ebay(_searchParameter).getEbayResults();
 		Results walmartResults = new Walmart(_searchParameter).getWalmartResults();
 		Results tjmaxxResults = new TjMaxx(_searchParameter).getTjMaxxResults();
-//		Results googleResults = new Google(_searchParameter).getGoogleResults();
-//		Results targetResults = new Target(_searchParameter).getTargetResults();
+		Results googleResults = new Google(_searchParameter).getGoogleResults();
+		Results targetResults = new Target(_searchParameter).getTargetResults();
 		Results neweggResults = new Newegg(_searchParameter).getNeweggResults();
 		String displayResults = "";
 
-		List<Results> results = removeEmptyResults(Arrays.asList(amazonResults, bestbuyResults, walmartResults, tjmaxxResults, neweggResults));
+		List<Results> results = removeEmptyResults(Arrays.asList(amazonResults, bestbuyResults, walmartResults, tjmaxxResults, neweggResults, googleResults, ebayResults, targetResults));
 
 		if (results.size() > 1) {
 			results.sort((r1, r2) -> {

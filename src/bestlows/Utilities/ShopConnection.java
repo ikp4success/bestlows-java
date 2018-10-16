@@ -10,6 +10,10 @@ import java.net.URL;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 public class ShopConnection {
 
 	private int _timeout = 999999;
@@ -24,6 +28,32 @@ public class ShopConnection {
 			return Jsoup.connect(url).timeout(_timeout).userAgent(_userAgent).referrer(url).followRedirects(true).get();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+	
+	public Document connect_okhttpclient_default(String url) {
+		try {
+			OkHttpClient client = new OkHttpClient();
+			Request request = new Request.Builder().url(url).get().build();
+		    Response response = client.newCall(request).execute();
+			return Jsoup.parse(response.body().string());
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+	
+	public Document connect_okhttpclient(String url, String parent_url) {
+		try {
+			String final_url = prepend_domain(url, parent_url);
+			return connect_default(final_url);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
