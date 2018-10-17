@@ -19,7 +19,7 @@ import bestlows.Shops.Google;
 import bestlows.Shops.TjMaxx;
 import bestlows.Shops.Walmart;
 import bestlows.Utilities.DefaultResources;
-import bestlows.Utilities.DisplayResults;
+import bestlows.Utilities.DisplayResultsAccessory;
 import bestlows.Utilities.Results;
 
 /**
@@ -55,18 +55,20 @@ public class SearchedResults extends HttpServlet {
 			} else {
 				// display error page
 				ErrorMessage = new DefaultResources().ErrorMessage("Could not find " + searchParameter);
-				System.out.println(searchParameter);
 				request.setAttribute("error_message", ErrorMessage);
 				request.getRequestDispatcher("/SearchedResultsWeb.jsp").forward(request, response);
-			}
+			}			
 
-			System.out.println(displayResults);
-
+		}else {
+			// display error page
+			ErrorMessage = new DefaultResources().ErrorMessage("Please Enter a search keyword");
+			request.setAttribute("error_message", ErrorMessage);
+			request.getRequestDispatcher("/SearchedResultsWeb.jsp").forward(request, response);
 		}
 	}
 
 	private String getDisplayResults(String searchParameter) {
-		DisplayResults dr = new DisplayResults(searchParameter);
+		DisplayResultsAccessory dr = new DisplayResultsAccessory(searchParameter, 2);
 		return dr.getDisplayResults();
 	}
 

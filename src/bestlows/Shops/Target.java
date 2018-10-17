@@ -38,7 +38,7 @@ public class Target {
 		return new ShopLinks(value, new DefaultLinks().get_targeturl());
 	}
 
-	public Results getTargetResults() {
+	public Results getResults() {
 		String parent_url = get_shoplink(_searchKeyword).get_UrlSearchKeyword();
 		Results result = null;
 		Document doc;

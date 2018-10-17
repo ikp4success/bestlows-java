@@ -36,7 +36,7 @@ public class BestBuy {
 		return new ShopLinks(value, new DefaultLinks().get_bestbuyurl());
 	}
 
-	public Results getBestBuyResults() {
+	public Results getResults() {
 		String parent_url = get_shoplink(_searchKeyword).get_UrlSearchKeyword();
 		Results result = null;
 		Document doc;
@@ -78,7 +78,7 @@ public class BestBuy {
 	private String getBestItem() {
 		Document doc;
 		String item_url = null;
-		doc = new ShopConnection().connect_okhttpclient_default(get_shoplink(_searchKeyword).get_UrlSearchKeyword());
+		doc = new ShopConnection().connect_default(get_shoplink(_searchKeyword).get_UrlSearchKeyword());
 		if (doc == null) {
 			return null;
 		}

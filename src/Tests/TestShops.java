@@ -13,7 +13,7 @@ class TestShops {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		amazon_results = new Amazon("wallet").getAmazonResults();
+		amazon_results = new Amazon("wallet").getResults();
 	}
 
 	@Test

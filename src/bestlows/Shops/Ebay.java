@@ -39,7 +39,7 @@ public class Ebay {
 		return new ShopLinks(value, new DefaultLinks().get_ebayurl());
 	}
 
-	public Results getEbayResults() {
+	public Results getResults() {
 		String parent_url = get_shoplink(_searchKeyword).get_UrlSearchKeyword();
 		Results result = null;
 		Document doc;

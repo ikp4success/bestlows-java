@@ -39,7 +39,7 @@ public class Amazon {
 		return new ShopLinks(value, new DefaultLinks().get_amazonurl());
 	}
 
-	public Results getAmazonResults() {
+	public Results getResults() {
 		String parent_url = get_shoplink(_searchKeyword).get_UrlSearchKeyword();
 		Results result = null;
 		Document doc;
@@ -87,7 +87,6 @@ public class Amazon {
 		if (doc.select("#noResultsTitle:contains(did not match any products)") != null
 				&& !doc.select("#noResultsTitle:contains(did not match any products)").text().isEmpty()) {
 
-			System.out.println("ERROR");
 			return null;
 		}
 
@@ -107,13 +106,9 @@ public class Amazon {
 							if (ratingcurrent > maxratingcurrent) {
 								maxratingcurrent = ratingcurrent;
 								bestItemUrl = items_2.get(0).attr("href");
-								System.out.println(bestItemUrl);
 								if (!bestItemUrl.contains("https://www.amazon.com")) {
 									bestItemUrl = "https://www.amazon.com" + bestItemUrl;
 								}
-								System.out.println(maxratingcurrent);
-								System.out.println(bestItemUrl);
-								System.out.println(get_shoplink(_searchKeyword).get_UrlEncodeSearchString());
 								break;
 							}
 						}

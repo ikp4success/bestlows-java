@@ -40,7 +40,7 @@ public class Newegg {
 		return new ShopLinks(value, new DefaultLinks().get_neweggurl());
 	}
 
-	public Results getNeweggResults() {
+	public Results getResults() {
 		String parent_url = get_shoplink(_searchKeyword).get_UrlSearchKeyword();
 		Results result = null;
 		Document doc;

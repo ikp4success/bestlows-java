@@ -39,7 +39,7 @@ public class Google {
 		return new ShopLinks(value, new DefaultLinks().get_googleshopurl());
 	}
 
-	public Results getGoogleResults() {
+	public Results getResults() {
 		String parent_url = get_shoplink(_searchKeyword).get_UrlSearchKeyword();
 		Document doc;
 		String item_url = null;

@@ -51,7 +51,7 @@ public class Results {
 	}
 
 	public void set_description(String _description) {
-		this._description = _description;
+		this._description = truncate(_description, 240);
 	}
 
 	public String get_image() {
@@ -120,6 +120,13 @@ public class Results {
 	
 	private String ifNullReturnString(String value) {
 		return new ExtraClass().ifNullReturnString(value);
+	}
+	
+	private static String truncate(String input, int maxLength) {
+	    if (input.length() <= maxLength) 
+	        return input;
+	    else 
+	        return input.substring(0, maxLength-2) + "..";
 	}
 	
 }
