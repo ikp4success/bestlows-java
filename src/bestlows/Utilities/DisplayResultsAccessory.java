@@ -45,7 +45,7 @@ public class DisplayResultsAccessory {
 				
 				displayResults = append_valid_result(dp_list_sorted);
 				
-				if(i > dp_list.size()) {
+				if(_results_size <= dp_list.size()) {
 					break;
 				}
 			}

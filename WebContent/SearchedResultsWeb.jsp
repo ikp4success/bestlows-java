@@ -36,10 +36,10 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="../bestlows">Home</a>
+					<li class="nav-item"><a class="nav-link" href="../">Home</a>
 					</li>
 					<li class="nav-item"><a class="nav-link"
-						href="../bestlows/About">About</a></li>
+						href="../About">About</a></li>
 
 				</ul>
 
