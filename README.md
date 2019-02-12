@@ -1,6 +1,14 @@
 # bestlows-java
 Easy way to find best lowest price products online.
 
+**hybrid website**
+
+http://www.shopasource.com/
+
+**hyprid repo**
+
+https://github.com/ikp4success/shopasource
+
 Scrape web pages online with java using jsoup.
 https://jsoup.org/
 
